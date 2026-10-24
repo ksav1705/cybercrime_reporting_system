@@ -16,8 +16,8 @@ A web-based portal developed with Flask that enables citizens to report cyber of
 
 ### 1. Clone the repository
 ```bash
-git clone [https://github.com/](https://github.com/)<your-username>/cybercrime-reporting-system.git
-cd cybercrime-reporting-system
+git clone https://github.com/ksav1705/cybercrime_reporting_system.git
+cd cybercrime_reporting_system
 ```
 
 ### 2. Set up a virtual environment
