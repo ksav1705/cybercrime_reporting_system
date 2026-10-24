@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-4">My Complaints</h2>
+<div class="table-responsive">
+    <table class="table table-striped table-hover border">
+        <thead class="table-dark">
+            <tr>
+                <th>Case ID</th>
+                <th>Category</th>
+                <th>Date Filed</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for complaint in complaints %}
+            <tr>
+                <td>#{{ complaint.id }}</td>
+                <td>{{ complaint.category }}</td>
+                <td>{{ complaint.date_posted.strftime('%Y-%m-%d') }}</td>
+                <td>
+                    {% if complaint.status == 'Pending' %}
+                        <span class="badge bg-warning text-dark">Pending</span>
+                    {% elif complaint.status == 'Under Investigation' %}
+                        <span class="badge bg-primary">Investigating</span>
+                    {% else %}
+                        <span class="badge bg-success">Closed</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4" class="text-center">You have not filed any reports yet.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

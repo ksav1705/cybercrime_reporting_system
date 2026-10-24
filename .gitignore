@@ -1,0 +1,21 @@
+# Bytecode & Caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# SQLite Database & Instance folder
+instance/
+*.db
+*.sqlite3
+
+# Uploaded user files (keep the folder structure, ignore contents)
+app/static/uploads/*
+!app/static/uploads/.gitkeep
+
+# Virtual Environments
+venv/
+.venv/
+env/
+
+# Environment keys & secrets
+.env

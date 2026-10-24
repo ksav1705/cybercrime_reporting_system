@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-4 text-danger">Police / Admin Dashboard</h2>
+<div class="table-responsive">
+    <table class="table table-bordered table-hover align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Victim</th>
+                <th>Category / Details</th>
+                <th>Evidence</th>
+                <th>Status Management</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for complaint in complaints %}
+            <tr>
+                <td>#{{ complaint.id }}</td>
+                <td>{{ complaint.author.name }}<br><small class="text-muted">{{ complaint.author.phone }}</small></td>
+                <td>
+                    <strong>{{ complaint.category }}</strong><br>
+                    <small>{{ complaint.description[:100] }}...</small>
+                </td>
+                <td>
+                    {% if complaint.evidence_file %}
+                        <a href="{{ url_for('static', filename='uploads/' + complaint.evidence_file) }}" target="_blank" class="btn btn-sm btn-outline-info">View File</a>
+                    {% else %}
+                        <span class="text-muted">None</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <form action="{{ url_for('update_status', complaint_id=complaint.id) }}" method="POST" class="d-flex gap-2">
+                        <select name="status" class="form-select form-select-sm">
+                            <option value="Pending" {% if complaint.status == 'Pending' %}selected{% endif %}>Pending</option>
+                            <option value="Under Investigation" {% if complaint.status == 'Under Investigation' %}selected{% endif %}>Investigating</option>
+                            <option value="Closed" {% if complaint.status == 'Closed' %}selected{% endif %}>Closed</option>
+                        </select>
+                        <button type="submit" class="btn btn-sm btn-dark">Update</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

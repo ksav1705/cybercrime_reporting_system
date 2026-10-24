@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm border-danger">
+            <div class="card-header bg-danger text-white">
+                <h4 class="mb-0">File a Cyber Crime Report</h4>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Crime Category</label>
+                        <select class="form-select" name="category" required>
+                            <option value="Financial Fraud">Financial / UPI Fraud</option>
+                            <option value="Phishing">Phishing / Hacking</option>
+                            <option value="Cyber Stalking">Cyber Stalking / Bullying</option>
+                            <option value="Identity Theft">Identity Theft</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Incident Description</label>
+                        <textarea class="form-control" name="description" rows="5" required placeholder="Provide exact dates, platforms used, and sequence of events..."></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Suspect Info (Optional)</label>
+                        <input type="text" class="form-control" name="suspect" placeholder="URLs, IP Addresses, Phone numbers">
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">Upload Evidence (.jpg, .png, .pdf)</label>
+                        <input class="form-control" type="file" name="evidence_file">
+                    </div>
+                    <button type="submit" class="btn btn-danger w-100 fw-bold">Submit Official Complaint</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
